@@ -9,11 +9,9 @@ import { QuemComponent } from './quem/quem.component';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { PokeapiService } from './pokeapi.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgParticlesModule } from 'ng-particles';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,11 +30,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     BrowserAnimationsModule,
+    NgParticlesModule,
     NgbModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatAutocompleteModule
+    MatButtonModule
   ],
   providers: [PokeapiService],
   bootstrap: [AppComponent]

@@ -7,10 +7,3 @@
   .example-full-width {
     width: 100%;
   }
-
-  .mask1 {
-    -webkit-mask-image: url(../../assets/img/backBlue.png);
-    mask-image: url(../../assets/img/backBlue.png);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-  }

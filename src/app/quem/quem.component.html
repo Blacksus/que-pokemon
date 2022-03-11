@@ -1,24 +1,19 @@
 <ng-container *ngIf="poke">
-    <img class="rounded w-75 mx-auto d-block mask1" src="{{imgPokemon}}" />
+    <img class="rounded w-75 mx-auto d-block" src="{{imgPokemon}}" />
 
     <div class="col-12">
-        <input class="form-control" disabled type="text" />
-        <input class="form-control" disabled type="text" />
-        <input class="form-control" disabled type="text" />
-        <input class="form-control" disabled type="text" />
-        <input class="form-control" disabled type="text" />
-        <input class="form-control" disabled type="text" />
-        <form class="example-form">
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Who's that Pokémon?</mat-label>
-                <input type="text" placeholder="Guess who" matInput [formControl]="chute" [matAutocomplete]="auto">
-                <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
-                        {{option.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </form>
-        <button class="btn btn-block" mat-raised-button color="primary">GUESS</button>
+        <input class="form-control" *ngFor="let pokemonErrado of erros" disabled type="text"
+            [value]="pokemonErrado.name" />
+        <input class="form-control" *ngFor="let tentativa of fakeArray" disabled type="text" />
+        <div class="mb-3 row" *ngIf="!acabou">
+            <div class="col">
+                <input id="typeahead-prevent-manual-entry" type="text" class="form-control"
+                    [(ngModel)]="pokemonSelecionado" [ngbTypeahead]="search" [inputFormatter]="formatter"
+                    [resultFormatter]="formatter" [editable]='false' />
+            </div>
+        </div>
+        <button [disabled]="acabou" (click)="chutar()" class="btn btn-block" mat-raised-button
+            color="primary">GUESS</button>
     </div>
+
 </ng-container>
