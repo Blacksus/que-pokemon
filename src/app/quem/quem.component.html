@@ -1,18 +1,21 @@
 <ng-container *ngIf="poke">
-    <img class="rounded w-75 mx-auto d-block" src="{{imgPokemon}}" />
-
+    <img #eleImgPokemon class="rounded w-75 mx-auto d-none" src="{{imgPokemon}}" />
+    <canvas #canvaPokemon width="350px" height="400px"></canvas>
+    <!-- <div>
+        <ng-particles [id]="id" [options]="particlesOptions" (particlesLoaded)="particlesLoaded($event)"></ng-particles>
+    </div> -->
     <div class="col-12">
-        <input class="form-control" *ngFor="let pokemonErrado of erros" disabled type="text"
+        <input class="form-control" *ngFor="let pokemonErrado of tentativas" disabled type="text"
             [value]="pokemonErrado.name" />
-        <input class="form-control" *ngFor="let tentativa of fakeArray" disabled type="text" />
-        <div class="mb-3 row" *ngIf="!acabou">
+        <input class="form-control" *ngFor="let f of fakeArray" disabled type="text" />
+        <div class="row" *ngIf="!acabou">
             <div class="col">
                 <input id="typeahead-prevent-manual-entry" type="text" class="form-control"
                     [(ngModel)]="pokemonSelecionado" [ngbTypeahead]="search" [inputFormatter]="formatter"
                     [resultFormatter]="formatter" [editable]='false' />
             </div>
         </div>
-        <button [disabled]="acabou" (click)="chutar()" class="btn btn-block" mat-raised-button
+        <button [disabled]="acabou" (click)="chutar()" class="btn btn-block mt-3" mat-raised-button
             color="primary">GUESS</button>
     </div>
 
